@@ -62,3 +62,17 @@ Pakiet zawiera testy jednostkowe uruchamiane poleceniem::
 
 Testy wykorzystują proste obiekty przykładowe, aby potwierdzić poprawność
 obsługi modeli, preprocesorów oraz błędów konfiguracyjnych.
+
+### Eksport pełnego kodu
+
+Jeżeli potrzebujesz szybko uzyskać kompletną zawartość projektu w jednym
+pliku tekstowym (np. aby wkleić ją do konwersacji), skorzystaj ze skryptu
+`scripts/generate_full_code.py`::
+
+    python -m scripts.generate_full_code > projekt.txt
+
+Domyślnie narzędzie wypisze zawartość `README.md`, `src/model_connector.py` oraz
+`tests/test_model_connector.py`, oddzielając je czytelnymi nagłówkami. Możesz
+również wskazać własne pliki (ścieżki względem katalogu głównego repozytorium)::
+
+    python -m scripts.generate_full_code README.md src/model_connector.py > kod.txt
