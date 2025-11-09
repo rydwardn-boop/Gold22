@@ -63,6 +63,33 @@ Pakiet zawiera testy jednostkowe uruchamiane poleceniem::
 Testy wykorzystują proste obiekty przykładowe, aby potwierdzić poprawność
 obsługi modeli, preprocesorów oraz błędów konfiguracyjnych.
 
+## Zaawansowany szkielet analizy akcji GitHub (AI Code Analyzer v2)
+
+W katalogu `ai_code_analyzer_v2` znajduje się bardziej rozbudowany szkielet do
+analizy repozytoriów akcji GitHub. Narzędzie składa się z trzech głównych
+modułów:
+
+* `analyzer.py` – odpowiada za rozpakowanie archiwum ZIP oraz analizę kodu
+  (manifesty, języki, zależności, wykrywanie endpointów API),
+* `synthesizer.py` – generuje przykładowy kod na podstawie wyników analizy,
+* `knowledge_base.py` – zarządza bazą wiedzy opartą na TinyDB.
+
+Uruchomienie narzędzia odbywa się poprzez prosty interfejs CLI dostępny w
+pliku `main.py`. Do analizy nowego archiwum ZIP umieszczonego w folderze
+`input_zips` użyj polecenia::
+
+    python ai_code_analyzer_v2/main.py analyze --zipfile example-action.zip
+
+Wyniki analizy zostaną zapisane w bazie wiedzy (`knowledge_base.json`) oraz
+zostanie wygenerowany plik z kodem w katalogu `generated_code`.
+
+Aby odpytać bazę wiedzy o akcje określonego typu, skorzystaj z komendy::
+
+    python ai_code_analyzer_v2/main.py query --type docker
+
+W katalogach `input_zips`, `generated_code` i `logs` znajdują się pliki
+pomocnicze `.gitkeep`, które ułatwiają wersjonowanie struktury projektu.
+
 ### Eksport pełnego kodu
 
 Jeżeli potrzebujesz szybko uzyskać kompletną zawartość projektu w jednym
